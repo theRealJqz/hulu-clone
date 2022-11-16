@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hulu clone</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://kit.fontawesome.com/d69f6a2e23.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" defer src="main.js"></script>
+</head>
+<body>
+    <div id="wrapper" class="active">
+        <nav id="topNav" class="">
+            <div id="nav-solid-wrapper" class=""></div>
+            <div id="nav-shade-wrapper" class="active"></div>
+            <span id="nav-logo" class="nav-handler">h</span>
+            <span id="nav-nav-wrapper">
+                <span id="nav-home" class="active nav-handler text-button">Home</span>
+                <span id="nav-tv" class="text-button nav-handler">TV</span>
+                <span id="nav-movies" class="text-button nav-handler">Movies</span>
+                <span id="nav-stuff" class="text-button nav-handler">My Stuff</span>
+            </span>
+            <span id="nav-user">
+                <i id="nav-search" class="nav-handler nav-search-icon text-button  fa-solid fa-magnifying-glass"></i>
+                <span class="nav-user-icon flex-center">U
+                </span>
+                <div class="user-settings-wrapper">
+                    <div id="nav-settings" class="user-settings">
+                        Nothing here 
+                    </div>
+                </div>
+            </span>
+        </nav>
+
+        <div id="main-content" class="">
+            
+        </div>
+        <div id="loading-screen" class="hidden">
+            <div class="loading-grids-horizontal">
+                <div class="loading-grid-one loading-grid"></div>
+                <div class="loading-grid-two loading-grid"></div>
+                <div class="loading-grid-three loading-grid"></div>
+                <div class="loading-grid-four loading-grid"></div>
+                <div class="loading-grid-five loading-grid"></div>
+            </div>
+            <div class="loading-grids-horizontal">
+                <div class="loading-grid-one loading-grid"></div>
+                <div class="loading-grid-two loading-grid"></div>
+                <div class="loading-grid-three loading-grid"></div>
+                <div class="loading-grid-four loading-grid"></div>
+                <div class="loading-grid-five loading-grid"></div>
+            </div>
+            <div class="loading-grids-horizontal">
+                <div class="loading-grid-one loading-grid"></div>
+                <div class="loading-grid-two loading-grid"></div>
+                <div class="loading-grid-three loading-grid"></div>
+                <div class="loading-grid-four loading-grid"></div>
+                <div class="loading-grid-five loading-grid"></div>
+            </div>
+        </div>
+        
+        <div id="focused-wrapper" class="hidden unfocus-content">
+            <div id="upper-focused-wrapper">
+
+                <div class="focused-title-wrapper flex-center">
+                    <div class="focused-title"></div>
+                    <div class="close-focused-wrapper flex-center">
+                        <div class="close-content unfocus-content flex-center">
+                            <div class="close-cross-right unfocus-content"></div>
+                            <div class="close-cross-left unfocus-content"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="focused-banner-area"></div>
+                
+                <div id="lower-focused-wrapper">
+                    <div id="lower-focused-wrapper-wrapper">
+                        <div class="loading-bar-wrapper flex-center hidden">
+                            <div class="loading-bar">
+                                <div class="loading-bar-filler"></div>
+                            </div>
+                        </div>
+                        <div class="focused-nav-wrapper">
+                            
+                        </div>
+                        <div id="focused-content">
+
+                            <div id="focused-genre" class="hidden"></div>
+
+                            <div id="focused-description" class="focused-content hidden">
+                                <h4 class="focused-about">About this show</h4>
+                                <h1 class="focused-name">*title*</h1>
+                                <p class="focused-description">*description*</p>
+                                <P class="focused-type">Type: <br>&emsp;- *type*</P>
+                                <p class="focused-released">Released: <br>&emsp;- *released*</p>
+                            </div>
+                            <div id="focused-suggestions" class="focused-content hidden">
+                                
+                            </div>
+                            
+                            <div id="focused-seasons" class="focused-content hidden">
+                                <select name="season" id="season-selector">
+                                </select>
+                                <div id="season-wrapper" data-season="1">
+                                </div>
+                            </div>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
