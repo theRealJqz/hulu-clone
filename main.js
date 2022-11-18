@@ -379,10 +379,10 @@ function createFocusBanner(data){//create focused-content banner
     const bannerContainer = document.querySelector("#focused-banner-area");
     const bannerElem = createBannerElement(data, true);
     bannerContainer.append(bannerElem);
-    bannerContainer.querySelector(".banner-content").onload = ()=>{
-        const color = handleColorTheme(bannerContainer.querySelector(".banner-content"), pickColor);
-        document.querySelector(":root").style.setProperty("--focused-banner-color", color);
-    }
+    // bannerContainer.querySelector(".banner-content").onload = ()=>{
+    //     const color = handleColorTheme(bannerContainer.querySelector(".banner-content"), pickColor);
+    //     document.querySelector(":root").style.setProperty("--focused-banner-color", color);
+    // }
 }
 function handleFocusBanner(){//handles when user clicks on a show. new pop-up = focused-content
     const id = this.dataset.id.match(/[a-z]+/i)[0];
@@ -701,96 +701,96 @@ function handleHomeBanner(parentEle, id, index, elem){//appends banner element a
     });
     parentEle.append(elem);
     //handle banner filter color
-    elem.querySelector(".banner-content").onload = ()=>{
-        const color = handleColorTheme(elem.querySelector(".banner-content"), pickColor);
-        document.querySelector(":root").style.setProperty("--banner-color", color)
-    }
+    // elem.querySelector(".banner-content").onload = ()=>{
+    //     const color = handleColorTheme(elem.querySelector(".banner-content"), pickColor);
+    //     document.querySelector(":root").style.setProperty("--banner-color", color)
+    // }
 }
-//handle banner color filter
-function pickColor(arr){
-    const colorPalette = {//corrosponding rbg color theme of image colors
-        white: "93,219,219", //light teal
-        grey: "44,134,179",
-        black: "55,43,193",
-    }
-    const index = {
-        0: "red",
-        1: "green",
-        2: "blue"
-    }
-    const pixelColors = {
-        white: 0,
-        black: 0,
-        grey: 0,
-        red: [],
-        green: [],
-        blue: []
-    };
-    for(let i=0; i<arr.length; i++){//take array of colors in rgb num
-        let prefix;
-        const sorted = [...arr[i]].sort((a,b) => a - b); //sort each rgb num from lowest to highest
-        if(sorted[2] < 50){
-            pixelColors.black = pixelColors.black + 1;  //if all three num are similar (diffrence between num less than 50) then its grey
-            continue;
-        }
-        if(sorted[0] > 245){
-            pixelColors.white = pixelColors.white + 1; //if lowest is greater than 245 than its white
-            continue; 
-        }
-        if(sorted[2] - sorted[0] < 50){
-            pixelColors.grey = pixelColors.grey + 1;
-            continue;
-        }
-        else prefix = index[arr[i].indexOf(sorted[2])]; //tally colors into red blue or green for further calculations
-        pixelColors[prefix].push(arr[i]);
-    }
-    if(pixelColors.white > 70){
-        return colorPalette.white;
-    }
-    if(pixelColors.black > 70){
-        return colorPalette.black 
-    }
-    return colorPalette.grey;
-}
-function handleColorTheme(img, decideColor){//iterate through canvas img and create an array of colors
-    let fullColorArr = [];
-    const imgDimensions = img.getClientRects()[0];
-    const canvas = new OffscreenCanvas(imgDimensions.width, imgDimensions.height);
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+//handle banner color filter TURNED OFF BECAUSE OF CORS
+// function pickColor(arr){
+//     const colorPalette = {//corrosponding rbg color theme of image colors
+//         white: "93,219,219", //light teal
+//         grey: "44,134,179",
+//         black: "55,43,193",
+//     }
+//     const index = {
+//         0: "red",
+//         1: "green",
+//         2: "blue"
+//     }
+//     const pixelColors = {
+//         white: 0,
+//         black: 0,
+//         grey: 0,
+//         red: [],
+//         green: [],
+//         blue: []
+//     };
+//     for(let i=0; i<arr.length; i++){//take array of colors in rgb num
+//         let prefix;
+//         const sorted = [...arr[i]].sort((a,b) => a - b); //sort each rgb num from lowest to highest
+//         if(sorted[2] < 50){
+//             pixelColors.black = pixelColors.black + 1;  //if all three num are similar (diffrence between num less than 50) then its grey
+//             continue;
+//         }
+//         if(sorted[0] > 245){
+//             pixelColors.white = pixelColors.white + 1; //if lowest is greater than 245 than its white
+//             continue; 
+//         }
+//         if(sorted[2] - sorted[0] < 50){
+//             pixelColors.grey = pixelColors.grey + 1;
+//             continue;
+//         }
+//         else prefix = index[arr[i].indexOf(sorted[2])]; //tally colors into red blue or green for further calculations
+//         pixelColors[prefix].push(arr[i]);
+//     }
+//     if(pixelColors.white > 70){
+//         return colorPalette.white;
+//     }
+//     if(pixelColors.black > 70){
+//         return colorPalette.black 
+//     }
+//     return colorPalette.grey;
+// }
+// function handleColorTheme(img, decideColor){//iterate through canvas img and create an array of colors
+//     let fullColorArr = [];
+//     const imgDimensions = img.getClientRects()[0];
+//     const canvas = new OffscreenCanvas(imgDimensions.width, imgDimensions.height);
+//     const ctx = canvas.getContext("2d");
+//     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    const y_increment = Math.round(canvas.height / 40); //collects pixel color at every Nth increment
-    const x_increment = Math.round(canvas.width / 40);
+//     const y_increment = Math.round(canvas.height / 40); //collects pixel color at every Nth increment
+//     const x_increment = Math.round(canvas.width / 40);
 
-    function percentageOfLength(length, percent){
-        return Math.round(length * percent);
-    }
-    function getColorAtPX(x, y){
-        const pixel = ctx.getImageData(x, y, 1, 1);
-        const pixelData = [pixel.data[0], pixel.data[1], pixel.data[2]];
-        fullColorArr.push(pixelData);
-    }
-    function pickLocation(canvasLengthStart, canvasLengthEnd, canvasIncrement, incrementStart, incrementEnd, incremenet){
-        for(let i = canvasLengthStart; i < canvasLengthEnd; i = i + canvasIncrement){
-            for(let j = incrementStart; j < incrementEnd; j= j + incremenet){
-                i= i + canvasIncrement;
-                if(i > canvasLengthEnd){
-                    return;
-                }
-                if(canvasIncrement > incremenet){
-                    getColorAtPX(i, j);
-                }
-                else getColorAtPX(j, i);
-            }
-        }
-    }
-    //pick the colors across top right bottom and left portion of image
-    pickLocation(0, canvas.width, x_increment, 5, percentageOfLength(canvas.height, 0.2), y_increment); //top
-    pickLocation(0, canvas.width, x_increment, percentageOfLength(canvas.height, 0.8), canvas.height, y_increment); //bottom
-    pickLocation(0, canvas.height, y_increment, 0, percentageOfLength(canvas.height, 0.15), x_increment); //left
-    pickLocation(0, canvas.height, y_increment, percentageOfLength(canvas.height, 0.85), canvas.height, x_increment); //right
-    return decideColor(fullColorArr); //pass the array of images and return a rgb theme color string
-}   
+//     function percentageOfLength(length, percent){
+//         return Math.round(length * percent);
+//     }
+//     function getColorAtPX(x, y){
+//         const pixel = ctx.getImageData(x, y, 1, 1);
+//         const pixelData = [pixel.data[0], pixel.data[1], pixel.data[2]];
+//         fullColorArr.push(pixelData);
+//     }
+//     function pickLocation(canvasLengthStart, canvasLengthEnd, canvasIncrement, incrementStart, incrementEnd, incremenet){
+//         for(let i = canvasLengthStart; i < canvasLengthEnd; i = i + canvasIncrement){
+//             for(let j = incrementStart; j < incrementEnd; j= j + incremenet){
+//                 i= i + canvasIncrement;
+//                 if(i > canvasLengthEnd){
+//                     return;
+//                 }
+//                 if(canvasIncrement > incremenet){
+//                     getColorAtPX(i, j);
+//                 }
+//                 else getColorAtPX(j, i);
+//             }
+//         }
+//     }
+//     //pick the colors across top right bottom and left portion of image
+//     pickLocation(0, canvas.width, x_increment, 5, percentageOfLength(canvas.height, 0.2), y_increment); //top
+//     pickLocation(0, canvas.width, x_increment, percentageOfLength(canvas.height, 0.8), canvas.height, y_increment); //bottom
+//     pickLocation(0, canvas.height, y_increment, 0, percentageOfLength(canvas.height, 0.15), x_increment); //left
+//     pickLocation(0, canvas.height, y_increment, percentageOfLength(canvas.height, 0.85), canvas.height, x_increment); //right
+//     return decideColor(fullColorArr); //pass the array of images and return a rgb theme color string
+// }   
 //page type
 function handlePageType(dataLocation, loadPage, loadingScreen){
     if(loadingScreen){
