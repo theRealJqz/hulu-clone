@@ -762,7 +762,7 @@ body{
     width: 96vw; margin: auto; 
     top: 90px;
     position: relative;
-    z-index: 800;
+    z-index: 150;
     background-color: #1e2126;
 }
 .search-inline{
