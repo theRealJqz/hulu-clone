@@ -761,7 +761,10 @@ body{
 /* search page */
 .search-wrapper{
     width: 96vw; margin: auto; 
-    padding-top: 90px;
+    top: 90px;
+    position: relative;
+    z-index: 800;
+    background-color: #1e2126;
 }
 .search-inline{
     display: flex; align-items: center;
@@ -897,6 +900,7 @@ body{
     height: 70%; width: 15%;
     border-radius: 15px;
     animation: loadingColorChange 1.5s linear infinite;
+    display: inline;
 }
 @keyframes loadingColorChange {
 0% { background-color: #D6D9DF;}
@@ -947,6 +951,12 @@ body{
     #nav-shade-wrapper{
         background: linear-gradient(#1e2126,rgb(30, 33, 38) 15.5%,rgb(30, 33, 38) 22.5%,rgb(30, 33, 38) 29%,rgba(30,33,38,.741) 35.3%,rgba(30,33,38,.648) 41.2%,rgba(30,33,38,.55) 47.1%,rgba(30,33,38,.45) 52.9%,rgba(30,33,38,.352) 58.8%,rgba(30,33,38,.259) 64.7%,rgba(30,33,38,.175) 71%,rgba(30,33,38,.104) 77.5%,rgba(30,33,38,.049) 84.5%,rgba(30,33,38,.013) 91.9%,rgba(30,33,38,0));
     }
+    .loading-grid-five{
+        display: none;
+    }
+    .loading-grid{
+        width: 19%;
+    }
 }
 @media(max-width: 480px){
     .banner-title{
@@ -974,5 +984,11 @@ body{
     }
     .banner-content.image-null{
         width: 100%;
+    }
+    .loading-grid-four{
+        display: none;
+    }
+    .loading-grid{
+        width: 25%;
     }
 }

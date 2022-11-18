@@ -158,7 +158,6 @@ function handleInlineImage(title, obj, wrapper){
         return wrapper.textContent = title;
     }
     else{
-        console.log(obj)
         const imagePath = obj.media_type == "person" ? "profile_path" : "poster_path";
         const img = createElementFunc("img", ["cardImage"]);
         img.src = `https://image.tmdb.org/t/p/w300${obj[imagePath]}`;
@@ -414,7 +413,7 @@ function handleFocusBanner(){//handles when user clicks on a show. new pop-up = 
 }
 function handleFocusGenres(){//when user clicks on genre card. creates a new popup called focused-genre that recommends content based off of genre
     function handleURL(type, sortType, genreID){//type = "tv" or "movie" / sortType = "&sort_by=vote_count.desc" .etc 
-        return `discover/${type}!api_key=KEY&language=en-US&sort_by=${sortType}&page=1&vote_count.gte=50&with_genres=${genreID}&include_null_first_air_dates=false`
+        return `https://truth-spice-eater.glitch.me/tmdb/discover/${type}!api_key=KEY&language=en-US&sort_by=${sortType}&page=1&vote_count.gte=50&with_genres=${genreID}&include_null_first_air_dates=false`
     }
     function getGenreData(key, value, endpoint){
         return webData[`${type}genre`].jsonData.genres[webData[`${type}genre`].jsonData.genres.findIndex(i => i[key] == value)][endpoint];
@@ -1070,7 +1069,6 @@ function fetchData(dataLocationArr, runFunc){
         })
         return Promise.all(fixedResponse);
     }).then(data => {
-        console.log(data)
         dataLocationArr.forEach((item, index) => {
             item.jsonData = data[index];
         })
@@ -1124,7 +1122,6 @@ document.addEventListener('scroll', ()=>{
 })
 document.querySelectorAll(".nav-handler").forEach(btn => {
     btn.addEventListener("click", (e)=>{
-        console.log(e)
         if(e.target.classList.contains("nav-handler")){
             if(e.target.classList.contains("active")){
                 return;
