@@ -881,7 +881,7 @@ function handleStuffPage(){
     banner.innerHTML = `
         <div class="stuff-banner-description">
             <h2>My Stuff</h2>
-            <span><p id="idk">Use the</p><div class="add-remove add flex-center"></div><p>button to add content you want to keep track of.</p></span>
+            <span><p id="idk">Use the</p><div class="add-remove add flex-center"></div><p>button to add content you want <br>to keep track of.</p></span>
         </div>
     `
     contentWrapper.innerHTML = `

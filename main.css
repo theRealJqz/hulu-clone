@@ -95,7 +95,6 @@ body{
 }
 #nav-nav-wrapper{
     display: flex;
-    width: 35vw;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
