@@ -4,8 +4,8 @@
     --hulu-active-font-color: #ffffff;
     --hulu-inactive-font-color: #818892;
     --hue: 132;
-    --banner-color: 41, 127, 60;
-    --focused-banner-color: 41, 127, 60;
+    --banner-color: 93,219,219;
+    --focused-banner-color: 93,219,219;
 }
 body{
     margin: 0;
